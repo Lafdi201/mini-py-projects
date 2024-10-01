@@ -13,6 +13,26 @@ sym_count = {
     "D" : 10
 }
 
+multipliers = {
+    "A" :3,
+    "B" :2,
+    "C" :0.6,
+    "D" : 0.3
+}
+
+def winnings(columns, lines, bet, multipliers):
+    winnings=0
+    winning_lines = []
+    for line in range(lines):
+        symbol=columns[0][line]
+        for column in columns:
+            t= column[line]
+            if symbol !=t :
+                break
+            else:
+                winnings += multipliers[symbol] * bet
+                winning_lines.append(line + 1)
+    return winnings, winning_lines
 
 def print_slot_machine(columns):
     for row in range(len(columns[0])):
